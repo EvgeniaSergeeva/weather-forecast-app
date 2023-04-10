@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+
 const OneDayHeader = ({ icon, temp, name, city, info, country }) => {
   const [showModal, setShowModal] = useState(false);
   const [showCountry, setShowCountry] = useState(false);
@@ -21,15 +22,15 @@ const OneDayHeader = ({ icon, temp, name, city, info, country }) => {
     setShowCountry(false);
   };
 
-  
   return (
     <CityNameWrapper>
       <IconWrapper
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <WeatherIcon alt="weather" src={`../../icons/${icon}.svg`} />
-        {showModal && <Modal >{info}</Modal>}
+        <WeatherIcon alt="weather" src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
+
+        {showModal && <Modal>{info}</Modal>}
         <TempWpapper>{Math.round(temp)}°C</TempWpapper>
       </IconWrapper>
       <CityName
@@ -63,7 +64,7 @@ OneDayHeader.defaultProps = {
 const CityNameWrapper = styled.div`
   position: relative;
   width: 60%;
-  background-color: #3736F1;
+  background-color: #3736f1;
   color: beige;
   border: none;
   border-radius: 20px;
@@ -122,9 +123,8 @@ const Modal = styled.div`
   color: #c3979f;
   font-size: 30px;
   z-index: 10;
-  
 `;
- /*color: #dd6b0b;*/
+/*color: #dd6b0b;*/
 
 const CountryModal = styled.div`
   position: absolute;

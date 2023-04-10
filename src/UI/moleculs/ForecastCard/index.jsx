@@ -23,7 +23,7 @@ const ForecastCard = (listItem) => {
       >
         <WeatherIcon
           alt="weather"
-          src={`../../icons/${listItem?.listItem.weather[0].icon}.svg`}
+          src={`${process.env.PUBLIC_URL}/icons/${listItem?.listItem.weather[0].icon}.svg`}
         />
         {showModal && <Modal>{listItem.listItem.weather[0].description}</Modal>}
       </IconWrapper>

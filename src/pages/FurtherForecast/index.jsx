@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Alert from "@mui/material/Alert";
@@ -7,6 +7,9 @@ import Loader from "../../UI/atoms/Loader";
 import FurtherForecastHeader from "../../UI/organizms/FurtherForecastHeader";
 import { FURTHER_FORECAST_URL, APIKEY } from "../../constants/api";
 import ForecastList from "../../UI/organizms/ForecastList";
+import Button from "../../UI/atoms/Button";
+import ROUTES from "../../constants/routes";
+import GoToTop from "../../UI/atoms/GoToTop/GoToTop";
 
 
 
@@ -61,6 +64,20 @@ const FurtherForecast = () => {
           population={coords?.data[index].population}
           city={coords?.data[index].city}
         />
+        <GoToTop/>
+        <ButtonWrapper>
+            <Button disabled={false}>
+              <LinkForecast to={ROUTES.ONE_DAY_FORECAST + `/${index}`}>
+                day forecast
+              </LinkForecast>
+            </Button>
+
+            <Button disabled={false}>
+              <LinkForecast to={ROUTES.MAIN_PAGE }>
+                Back
+              </LinkForecast>
+            </Button>
+          </ButtonWrapper>
         <ForecastList data={data.list}/>
       </ContentWrapper>
        )} 
@@ -75,9 +92,22 @@ const Wrapper = styled.div`
 `;
 const ContentWrapper = styled.div`
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   row-gap: 30px;
   justify-content: space-between;
+`;
+const LinkForecast = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+const ButtonWrapper = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 900px) {
+    width: 90%;
+  }
 `;

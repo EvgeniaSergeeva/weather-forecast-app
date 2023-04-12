@@ -19,7 +19,7 @@ const CityCard = ({ item }) => {
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ fontSize: 18 }}
+            sx={{ fontSize: 18, lineHeight: "16px" }}
           >
             {item?.city && item.city}
           </Typography>

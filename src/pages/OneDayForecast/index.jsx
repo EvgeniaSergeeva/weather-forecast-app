@@ -76,10 +76,16 @@ const OneDayForecast = () => {
             speed={data?.wind.speed}
           />
           <ButtonWrapper>
-            <Button>
-              <LinkFurtherForecast to={ROUTES.FURTHER_FORECAST + `/${index}`}>
+            <Button disabled={false}>
+              <LinkForecast to={ROUTES.FURTHER_FORECAST + `/${index}`}>
                 5 days forecast
-              </LinkFurtherForecast>
+              </LinkForecast>
+            </Button>
+
+            <Button disabled={false}>
+              <LinkForecast to={ROUTES.MAIN_PAGE }>
+                Back
+              </LinkForecast>
             </Button>
           </ButtonWrapper>
         </ContentWrapper>
@@ -94,22 +100,25 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 const ContentWrapper = styled.div`
-  width: 80%;
-  margin:0 auto;
+  width: 90%;
+  margin:20px auto;
   display: flex;
   flex-direction: column;
   row-gap: 30px;
   justify-content: start;
+
  
 `;
-const LinkFurtherForecast = styled(Link)`
+const LinkForecast = styled(Link)`
   text-decoration: none;
   color: white;
 `;
 const ButtonWrapper = styled.div`
   width: 60%;
   margin: 0 auto;
-  padding: 40px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `;

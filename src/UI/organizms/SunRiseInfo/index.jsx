@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { CardActionArea, Typography, Card, CardContent } from "@mui/material";
+import {  Typography, Card, CardContent } from "@mui/material";
 
 const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
   const formatTime = (sec) => {
@@ -17,7 +17,7 @@ const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
     width: "60%",
     padding: "0 20px",
     borderRadius: "15px",
-    margin:'0 20px',
+    margin:'0 auto',
     height: "80px",
     backgroundColor: ' #c3979f;',
   };
@@ -30,7 +30,6 @@ const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
 
   return (
     <Card sx={cardStyle}>
-      <CardActionArea>
         <CardContent>
           <Typography
             gutterBottom
@@ -44,7 +43,6 @@ const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
             Sunset:   {sunsetTime ? formatTime(sunsetTime) : "No information"}
           </Typography>
         </CardContent>
-      </CardActionArea>
     </Card>
   );
 };

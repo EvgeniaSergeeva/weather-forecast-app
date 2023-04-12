@@ -89,16 +89,24 @@ ForecastCard.defaultProps = {
 };
 
 const Wrapper = styled.div`
-  width: 300px;
+  width: 30%;
   padding: 10px;
-  //   border: 1px solid #e46e36;
-  //   background-color: #e46e36;
+    //border: 1px solid #e46e36;
+   // background-color: #e46e36;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: 30px;
   justify-content: start;
+  @media (max-width: 1400px) {
+    width: 44%;
+   }
+   @media (max-width: 850px) {
+    width: 90%;
+    justify-content: space-around;
+   }
+
 `;
 
 const IconWrapper = styled.div`
@@ -155,5 +163,8 @@ const Modal = styled.div`
   color: #e46e36;
   position: absolute;
   top: 70%;
-  left: -10%;
+  left: 1%;
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
 `;

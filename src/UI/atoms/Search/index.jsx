@@ -13,7 +13,7 @@ const Search = ({ value, onChange }) => {
       InputProps={{
         startAdornment: <SearchIcon />,
         style: {
-          width: "350px",
+          width: "320px",
           borderRadius: "10px",
           color: "#4A514E",
           border: "darkgrey",

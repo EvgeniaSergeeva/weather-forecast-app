@@ -25,10 +25,10 @@ const OneDayHeader = ({ icon, temp, name, city, info, country }) => {
   return (
     <CityNameWrapper>
       <IconWrapper
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        
       >
-        <WeatherIcon alt="weather" src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
+        <WeatherIcon onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}alt="weather" src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
 
         {showModal && <Modal>{info}</Modal>}
         <TempWpapper>{Math.round(temp)}°C</TempWpapper>
@@ -64,6 +64,7 @@ OneDayHeader.defaultProps = {
 const CityNameWrapper = styled.div`
   position: relative;
   width: 60%;
+  margin:0 auto;
   background-color: #3736f1;
   color: beige;
   border: none;
@@ -76,7 +77,7 @@ const CityNameWrapper = styled.div`
   justify-content: space-around;
 
   @media (max-width: 800px) {
-    width: 100%;
+    width: 90%;
     border-radius: 10px;
     padding: 20px;
     font-size: 22px;
@@ -84,10 +85,11 @@ const CityNameWrapper = styled.div`
   }
 `;
 const IconWrapper = styled.div`
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  
   position: relative;
 `;
 const WeatherIcon = styled.img`
@@ -96,6 +98,12 @@ const WeatherIcon = styled.img`
   @media (max-width: 700px) {
     width: 163px;
     height: 163px;
+    cursor: pointer;
+  };
+  @media (max-width: 400px) {
+    width: 153px;
+    height: 163px;
+    cursor: pointer;
   }
 `;
 const TempWpapper = styled.p`
@@ -122,19 +130,27 @@ const Modal = styled.div`
   border: none;
   color: #c3979f;
   font-size: 30px;
+  font-weight:600;
   z-index: 10;
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 /*color: #dd6b0b;*/
 
 const CountryModal = styled.div`
   position: absolute;
   top: 87%;
-  left: 30%;
-  width: 300px;
+  left: 10%;
+  width: 500px;
   height: 30px;
   border: none;
   color: #c3979f;
   font-size: 30px;
+  font-weight: 600;
   z-index: 10;
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 //  color: #dd6b0b;

@@ -4,15 +4,17 @@ import styled from "styled-components";
 
 const FurtherForecastHeader = ({ region, population, city }) => {
   const [showCountry, setShowCountry] = useState(false);
-
+  const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnterCity = () => {
     setShowCountry(true);
+    setIsHovered(true);
   };
   const handleMouseLeaveCity = () => {
     setShowCountry(false);
+    setIsHovered(false);
   };
   return (
-    <HeaderWrapper>
+    <HeaderWrapper isHovered={isHovered}>
       <CityName
         onMouseEnter={handleMouseEnterCity}
         onMouseLeave={handleMouseLeaveCity}
@@ -56,20 +58,25 @@ const HeaderWrapper = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-
-  @media (max-width: 1400px) {
-    width: 600px;
-  }
-  @media (max-width: 940px) {
-    width: 60%;
-  }
-
+  transition: all 0.2s ease-in-out;
+  ${(props) =>
+    props.isHovered &&
+    `
+    transform: scale(1.1);
+  `};
+  @media (max-width: 600px) {
+    ${(props) =>
+      props.isHovered &&
+      `
+      transform: scale(1);
+    `}
+    };
   @media (max-width: 500px) {
-    width: 100%;
+    width: 94%;
     border-radius: 10px;
-    padding: 20px;
-    font-size: 22px;
     padding: 20px 10px;
+    font-size: 22px;
+    
   }
 `
 const CityName = styled.p`

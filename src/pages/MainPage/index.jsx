@@ -66,7 +66,7 @@ export default MainPage;
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 50px;
+  padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;

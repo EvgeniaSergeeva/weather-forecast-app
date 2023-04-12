@@ -17,13 +17,13 @@ const ForecastList = ({data}) => {
  export default ForecastList;
 
 const ListWrapper = styled.div`
-width: 90%;
-  
+width: 100%;
   padding: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
 
   @media (max-width: 800px) {
     width: 90%;

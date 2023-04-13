@@ -43,6 +43,3 @@ cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
     width: 120px;
   }
 `
-// background-color: #E46E36;
-//&:hover{cursor:pointer;
-   // opacity: 0.8} ;

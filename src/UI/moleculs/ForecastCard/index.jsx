@@ -14,6 +14,7 @@ const ForecastCard = (listItem) => {
     setShowModal(false);
     setIsHovered(false);
   };
+
   return (
     <Wrapper>
       <IconWrapper
@@ -28,37 +29,24 @@ const ForecastCard = (listItem) => {
         {showModal && <Modal>{listItem.listItem.weather[0].description}</Modal>}
       </IconWrapper>
       <InfoWrapper>
-        <InfoTime>
-          {" "}
-          {listItem?.listItem.dt_txt &&
-            listItem.listItem.dt_txt.slice(0, 16)}{" "}
-        </InfoTime>
+        <InfoTime>{listItem?.listItem.dt_txt.slice(0, 16)}</InfoTime>
         <InfoItem>
-          Temperature:{" "}
-          {listItem?.listItem.main.temp
-            ? listItem.listItem.main.temp
-            : "no information"}
+          Temperature:
+          {listItem?.listItem.main?.temp || "no information"}
           °C
         </InfoItem>
         <InfoItem>
-          Humidity:{" "}
-          {listItem?.listItem.main.humidity
-            ? listItem.listItem.main.humidity
-            : "no information"}
-          %
+          Humidity:
+          {listItem?.listItem.main?.humidity || "no information"}%
         </InfoItem>
         <InfoItem>
-          Pressure:{" "}
-          {listItem?.listItem.main.pressure
-            ? listItem.listItem.main.pressure
-            : "no information"}{" "}
+          Pressure:
+          {listItem?.listItem.main?.pressure || "no information"}
           kPa
         </InfoItem>
         <InfoItem>
-          Wind:{" "}
-          {listItem?.listItem.wind.speed
-            ? listItem.listItem.wind.speed
-            : "no information"}{" "}
+          Wind:
+          {listItem?.listItem.wind?.speed || "no information"}
           mps
         </InfoItem>
       </InfoWrapper>
@@ -80,19 +68,21 @@ ForecastCard.propTypes = {
 };
 
 ForecastCard.defaultProps = {
-  icon: "",
-  date: "",
-  temp: null,
-  humidity: null,
-  pressure: null,
-  speed: null,
+  listItem: {
+    icon: "",
+    date: "",
+    temp: null,
+    humidity: null,
+    pressure: null,
+    speed: null,
+  },
 };
 
 const Wrapper = styled.div`
   width: 30%;
   padding: 10px;
-    //border: 1px solid #e46e36;
-   // background-color: #e46e36;
+  //border: 1px solid #e46e36;
+  // background-color: #e46e36;
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -101,19 +91,18 @@ const Wrapper = styled.div`
   justify-content: start;
   @media (max-width: 1400px) {
     width: 44%;
-   }
-   @media (max-width: 850px) {
+  }
+  @media (max-width: 850px) {
     width: 90%;
     justify-content: space-around;
-   }
-
+  }
 `;
 
 const IconWrapper = styled.div`
   position: relative;
   width: 120px;
-  padding:10px 10px 10px 15px;
-  background-color: #3736F1;
+  padding: 10px 10px 10px 15px;
+  background-color: #3736f1;
   border-radius: 10px;
   transition: all 0.2s ease-in-out;
   ${(props) =>

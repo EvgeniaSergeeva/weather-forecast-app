@@ -5,6 +5,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const GoToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
@@ -14,23 +15,25 @@ const GoToTop = () => {
       }
     });
   }, []);
+
   const goToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
   return (
     <Wrap>
-      {" "}
       {showTopBtn && (
         <Btn onClick={goToTop}>
           <ArrowUpwardIcon />
         </Btn>
-      )}{" "}
+      )}
     </Wrap>
   );
 };
+
 export default GoToTop;
 const Wrap = styled.div``;
 const Btn = styled.button`

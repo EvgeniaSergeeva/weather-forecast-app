@@ -83,4 +83,3 @@ const InputWrapper = styled.div`
   align-items: center;
 `;
 
-//const defaultUrl = `${GEOAPIURL}/cities?minPopulation=1000&namePrefix=${searchValue}`

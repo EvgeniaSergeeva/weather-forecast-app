@@ -6,7 +6,7 @@ import { CardActionArea, Typography, CardContent, Card } from "@mui/material";
 const CityCard = ({ item }) => {
   console.log({ item });
   return (
-    <Card sx={{ width: 345, height: 40, margin: "0 auto" }}>
+    <Card sx={{ width: 320, height: 40, margin: "0 auto" }}>
       <CardActionArea>
         <CardContent
           sx={{
@@ -19,12 +19,12 @@ const CityCard = ({ item }) => {
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ fontSize: 18, lineHeight: "16px" }}
+            sx={{ fontSize: 16, lineHeight: "16px" }}
           >
-            {item?.city && item.city}
+            {item?.city || "unknown"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item?.countryCode && item.countryCode}
+            {item?.countryCode || "unknown"}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -41,6 +41,6 @@ CityCard.propTypes = {
   }),
 };
 CityCard.defaultProps = {
-  city: "",
-  countryCode: "",
+  item: { city: "", 
+  countryCode: "" },
 };

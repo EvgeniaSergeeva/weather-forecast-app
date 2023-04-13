@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import {  Typography, Card, CardContent } from "@mui/material";
+import { Typography, Card, CardContent } from "@mui/material";
 
 const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
   const formatTime = (sec) => {
@@ -10,44 +10,42 @@ const SunRiseInfo = ({ sunriseTime, sunsetTime, timeZone }) => {
     const seconds = date.getSeconds().toString().padStart(2, "0");
     const formattedTime = ` ${hours}:${minutes}:${seconds}`;
     return formattedTime;
-    
-  };
-
-  const cardStyle = {
-    width: "60%",
-    padding: "0 20px",
-    borderRadius: "15px",
-    margin:'0 auto',
-    height: "80px",
-    backgroundColor: ' #c3979f;',
-  };
-  const typographyStyle = {
-    fontSize: "15px",
-    color: "#747877",
-    fontWeight: "600",
-    
   };
 
   return (
     <Card sx={cardStyle}>
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={typographyStyle}
-          >
-            Sunrise:   {sunriseTime ? formatTime(sunriseTime) : "No information"}
-          </Typography>
-          <Typography variant="h5" sx={typographyStyle}>
-            Sunset:   {sunsetTime ? formatTime(sunsetTime) : "No information"}
-          </Typography>
-        </CardContent>
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={typographyStyle}
+        >
+          Sunrise: {formatTime(sunriseTime) || "No information"}
+        </Typography>
+        <Typography variant="h5" sx={typographyStyle}>
+          Sunset: {formatTime(sunsetTime) || "No information"}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
 
 export default SunRiseInfo;
+
+const cardStyle = {
+  width: "60%",
+  padding: "0 20px",
+  borderRadius: "15px",
+  margin: "0 auto",
+  height: "80px",
+  backgroundColor: " #c3979f;",
+};
+const typographyStyle = {
+  fontSize: "15px",
+  color: "#747877",
+  fontWeight: "600",
+};
 
 SunRiseInfo.propTypes = {
   sunriseTime: PropTypes.number,

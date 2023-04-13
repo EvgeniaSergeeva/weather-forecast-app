@@ -23,7 +23,7 @@ const FurtherForecastHeader = ({ region, population, city }) => {
       </CityName>
       {showCountry && (
         <CountryModal>
-          <div>{region},</div>
+          <div>{region}</div>
           <div>population: {population} people</div>
         </CountryModal>
       )}
@@ -47,7 +47,8 @@ export default FurtherForecastHeader;
 
 const HeaderWrapper = styled.div`
   position: relative;
-  width: 90%;
+  width: 84%;
+  margin: 0 auto;
   background-color: #3736F1;
   color: beige;
   border: none;
@@ -88,7 +89,7 @@ const CityName = styled.p`
 const CountryModal = styled.div`
   position: absolute;
   bottom: 5%;
-  left: 20%;
+  left: 40%;
   width: 300px;
   height: 40px;
   border: none;
@@ -100,4 +101,15 @@ const CountryModal = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  & div {
+    width: 80%;
+  }
+  @media (max-width: 900px) {
+    left: 30%;
+      
+    }
+  @media (max-width: 500px) {
+  left: 5%;
+    
+  }
 `;

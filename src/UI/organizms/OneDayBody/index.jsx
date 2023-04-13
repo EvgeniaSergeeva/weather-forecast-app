@@ -11,13 +11,13 @@ const OneDayBody = ({
   speed,
 }) => {
   return <BodyWrapper>
-    <BodyDesc>{description ? description.charAt(0).toUpperCase() + description.slice(1) : ""}</BodyDesc>
-    <BodyInfo>Temperature: {temp ? temp : "no information"} °C</BodyInfo>
-    <BodyInfo>Feels like: {feelsLike ? feelsLike : "no information"}°C</BodyInfo>
-    <BodyInfo>Humidity: {humidity ? humidity : "no information"}%</BodyInfo>
-    <BodyInfo>Pressure: {pressure ? pressure : "no information"} kPa</BodyInfo>
+    <BodyDesc>{description.charAt(0).toUpperCase() + description.slice(1) || ""}</BodyDesc>
+    <BodyInfo>Temperature: {temp ||  "no information"} °C</BodyInfo>
+    <BodyInfo>Feels like: {feelsLike ||  "no information"}°C</BodyInfo>
+    <BodyInfo>Humidity: {humidity || "no information"}%</BodyInfo>
+    <BodyInfo>Pressure: {pressure || "no information"} kPa</BodyInfo>
     <BodyInfo>
-      Wind: {speed ? speed : "no information"} meters per second
+      Wind: {speed || "no information"} meters per second
     </BodyInfo>
   </BodyWrapper>;
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import Alert from "@mui/material/Alert";
@@ -10,8 +10,6 @@ import ForecastList from "../../UI/organizms/ForecastList";
 import Button from "../../UI/atoms/Button";
 import ROUTES from "../../constants/routes";
 import GoToTop from "../../UI/atoms/GoToTop/GoToTop";
-
-
 
 const FurtherForecast = () => {
   const { index } = useParams();
@@ -28,11 +26,9 @@ const FurtherForecast = () => {
     }
   }, []);
 
-
-
-   useEffect(() => {
+  useEffect(() => {
     if (coords && coords.data) {
-       const latitud = coords.data[index].latitude;
+      const latitud = coords.data[index].latitude;
       const longitud = coords.data[index].longitude;
       const furtherForecastWeatherUrl = `${FURTHER_FORECAST_URL}lat=${latitud}&lon=${longitud}&appid=${APIKEY}&units=metric`;
 
@@ -51,21 +47,23 @@ const FurtherForecast = () => {
     }
   }, [index, coords]);
 
-  console.log(data)
-
+  if (loading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <Alert severity="error">{error}</Alert>;
+  }
   return (
     <Wrapper>
-      {loading && <Loader />}
-      {error && <Alert severity="error">{error}</Alert>}
       {data && (
-      <ContentWrapper>
-        <FurtherForecastHeader
-          region={coords?.data[index].region}
-          population={coords?.data[index].population}
-          city={coords?.data[index].city}
-        />
-        <GoToTop/>
-        <ButtonWrapper>
+        <ContentWrapper>
+          <FurtherForecastHeader
+            region={coords?.data[index].region}
+            population={coords?.data[index].population}
+            city={coords?.data[index].city}
+          />
+          <GoToTop />
+          <ButtonWrapper>
             <Button disabled={false}>
               <LinkForecast to={ROUTES.ONE_DAY_FORECAST + `/${index}`}>
                 day forecast
@@ -73,14 +71,12 @@ const FurtherForecast = () => {
             </Button>
 
             <Button disabled={false}>
-              <LinkForecast to={ROUTES.MAIN_PAGE }>
-                Back
-              </LinkForecast>
+              <LinkForecast to={ROUTES.MAIN_PAGE}>Back</LinkForecast>
             </Button>
           </ButtonWrapper>
-        <ForecastList data={data.list}/>
-      </ContentWrapper>
-       )} 
+          <ForecastList data={data.list} />
+        </ContentWrapper>
+      )}
     </Wrapper>
   );
 };
@@ -91,7 +87,7 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 const ContentWrapper = styled.div`
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
   display: flex;
   flex-direction: column;
@@ -108,6 +104,9 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   @media (max-width: 900px) {
-    width: 90%;
+    width: 70%;
+  }
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `;

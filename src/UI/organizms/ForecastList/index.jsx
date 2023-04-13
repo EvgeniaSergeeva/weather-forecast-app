@@ -17,7 +17,8 @@ const ForecastList = ({data}) => {
  export default ForecastList;
 
 const ListWrapper = styled.div`
-width: 100%;
+width: 84%;
+margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: row;

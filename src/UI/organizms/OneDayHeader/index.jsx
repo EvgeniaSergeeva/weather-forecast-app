@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-
 const OneDayHeader = ({ icon, temp, name, city, info, country }) => {
   const [showModal, setShowModal] = useState(false);
   const [showCountry, setShowCountry] = useState(false);
@@ -24,11 +23,13 @@ const OneDayHeader = ({ icon, temp, name, city, info, country }) => {
 
   return (
     <CityNameWrapper>
-      <IconWrapper
-        
-      >
-        <WeatherIcon onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}alt="weather" src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`} />
+      <IconWrapper>
+        <WeatherIcon
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          alt="weather"
+          src={`${process.env.PUBLIC_URL}/icons/${icon}.svg`}
+        />
 
         {showModal && <Modal>{info}</Modal>}
         <TempWpapper>{Math.round(temp)}°C</TempWpapper>
@@ -64,12 +65,12 @@ OneDayHeader.defaultProps = {
 const CityNameWrapper = styled.div`
   position: relative;
   width: 60%;
-  margin:0 auto;
+  margin: 0 auto;
   background-color: #3736f1;
   color: beige;
   border: none;
   border-radius: 20px;
-  padding: 40px;
+  padding: 40px 40px 40px 20px;
   font-size: 36px;
   display: flex;
   flex-direction: column;
@@ -89,17 +90,17 @@ const IconWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
-  
+
   position: relative;
 `;
 const WeatherIcon = styled.img`
   width: 266px;
   height: 266px;
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     width: 163px;
     height: 163px;
     cursor: pointer;
-  };
+  }
   @media (max-width: 400px) {
     width: 153px;
     height: 163px;
@@ -107,14 +108,18 @@ const WeatherIcon = styled.img`
   }
 `;
 const TempWpapper = styled.p`
-  font-size: 80px;
+  font-size: 100px;
   color: #c3979f;
   font-weight: 700;
   @media (max-width: 900px) {
-    font-size: 60px;
+    font-size: 80px;
+    line-height: 150px;
+  }
+  @media (max-width: 600px) {
+    font-size: 50px;
+    line-height: 100px;
   }
 `;
-// color: #dd6b0b;
 const CityName = styled.p`
   font-size: 24px;
   text-align: center;
@@ -130,13 +135,12 @@ const Modal = styled.div`
   border: none;
   color: #c3979f;
   font-size: 30px;
-  font-weight:600;
+  font-weight: 600;
   z-index: 10;
   @media (max-width: 800px) {
     font-size: 18px;
   }
 `;
-/*color: #dd6b0b;*/
 
 const CountryModal = styled.div`
   position: absolute;
@@ -153,4 +157,3 @@ const CountryModal = styled.div`
     font-size: 18px;
   }
 `;
-//  color: #dd6b0b;
